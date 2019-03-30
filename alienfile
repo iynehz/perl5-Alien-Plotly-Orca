@@ -1,5 +1,8 @@
 use alienfile;
 
+use lib 'util';
+use MyInstallUtil;
+
 # Download from Anaconda repo instead as plotly-orca's github releases page.
 # This is because latter's Windows and OSX downloads still needs installation.
 my $plotly_orca_version          = '1.2.1';
@@ -18,15 +21,23 @@ my %download_url = (
     linux   => $make_url->('linux-64'),
 );
 
-die 'Unsupported OS' unless grep { $^O eq $_ } (keys %download_url);
+die 'Unsupported OS' unless grep { $^O eq $_ } ( keys %download_url );
+
+if ( MyInstallUtil::need_xvfb() and not MyInstallUtil::can_xvfb() ) {
+    die "plotly-orca requires a running X service. "
+      . "But your host seems to be headless and you don't have xvfb at all. "
+      . "Please install xvfb.";
+}
 
 configure {
-    'Path::Tiny' => 0,
+    'Capture::Tiny'         => 0,
+    'File::Which'           => 0,
+    'Path::Tiny'            => 0,
     'File::Copy::Recursive' => 0,
 };
 
 plugin 'Probe::CommandLine' => (
-    command => 'orca',
+    command => MyInstallUtil::wrap_orca('orca'),
     args    => ['-h'],
     match   => qr/plotly/i,
 );
@@ -41,21 +52,23 @@ share {
         my ($build) = @_;
 
         require Path::Tiny;
-        Path::Tiny->import;
 
         my $extract = $build->install_prop->{extract};
 
         # Patch orca.cmd as Anaconda's orca.cmd uses Anaconda's path.
-        if ( $^O eq 'MSWin32' ) { 
+        if ( $^O eq 'MSWin32' ) {
 
             # on Windows also adjust the directory structure.
-            path($extract, 'orca.cmd')->remove;
-            path($extract, 'bin', 'orca.cmd' )->spew(<<'END_OF_TEXT');
+            Path::Tiny::path( $extract, 'orca.cmd' )->remove;
+            Path::Tiny::path( $extract, 'bin', 'orca.cmd' )
+              ->spew(<<'END_OF_TEXT');
 @echo off
 %~dp0\..\orca_app\orca.exe %*
 END_OF_TEXT
-        } else {
-            path($extract, 'bin', 'orca' )->spew(<<'END_OF_TEXT');
+        }
+        else {
+            my $orca = Path::Tiny::path( $extract, 'bin', 'orca' );
+            $orca->spew(<<'END_OF_TEXT');
 #!/bin/bash
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
@@ -68,14 +81,24 @@ else
     exec ${DIR}/../lib/orca_app/orca "$@"
 fi
 END_OF_TEXT
+            $orca->chmod('0755');
         }
     };
 
-    build [
-        'cp -r * %{.install.prefix}',
-    ];
+    build sub {
+        my ($build) = @_;
 
-    gather [ [ 'orca', '--version', \'%{.runtime.version}' ], ];
+        my $extract = $build->install_prop->{extract};
+        my $prefix  = $build->install_prop->{prefix};
 
+        require File::Copy::Recursive;
+        File::Copy::Recursive::dircopy( $extract, $prefix );
+    };
+
+    gather sub {
+        my ($build) = @_;
+
+        $build->runtime_prop->{version} = MyInstallUtil::detect_orca_version();
+    };
 };
 

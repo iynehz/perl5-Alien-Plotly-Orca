@@ -1,4 +1,6 @@
 language: perl
+services:
+  - xvfb
 perl:
   - "5.26"
   - "5.20"
