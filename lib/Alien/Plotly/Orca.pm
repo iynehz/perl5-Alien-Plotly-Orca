@@ -4,7 +4,6 @@ package Alien::Plotly::Orca;
 
 use strict;
 use warnings;
-use utf8;
 
 # VERSION
 
@@ -17,13 +16,18 @@ __END__
 =head1 SYNOPSIS
 
     use Alien::Plotly::Orca;
+    use Config;
 
     $ENV{PATH} = join(
-        ( $^O eq 'MSWin32' ? ';' : ':' ),
+        $Config{path_sep},
         Alien::Plotly::Orca->bin_dir,
         $ENV{PATH}
     );
+
+    # Now you have plotly-orca executable in $ENV{PATH}
+    print `orca -h`;
     
+    # get version
     my $version = Alien::Plotly::Orca->version;
 
 =head1 DESCRIPTION

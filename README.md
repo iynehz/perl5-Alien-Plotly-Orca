@@ -12,13 +12,18 @@ version 0.0000\_01
 
 ```perl
 use Alien::Plotly::Orca;
+use Config;
 
 $ENV{PATH} = join(
-    ( $^O eq 'MSWin32' ? ';' : ':' ),
+    $Config{path_sep},
     Alien::Plotly::Orca->bin_dir,
     $ENV{PATH}
 );
 
+# Now you have plotly-orca executable in $ENV{PATH}
+print `orca -h`;
+
+# get version
 my $version = Alien::Plotly::Orca->version;
 ```
 
