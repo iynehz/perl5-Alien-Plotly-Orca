@@ -60,8 +60,9 @@ share {
 
             # on Windows also adjust the directory structure.
             Path::Tiny::path( $extract, 'orca.cmd' )->remove;
-            Path::Tiny::path( $extract, 'bin', 'orca.cmd' )
-              ->spew(<<'END_OF_TEXT');
+            my $orca = Path::Tiny::path( $extract, 'bin', 'orca.cmd' );
+            $orca->touchpath;
+            $orca->spew(<<'END_OF_TEXT');
 @echo off
 %~dp0\..\orca_app\orca.exe %*
 END_OF_TEXT
