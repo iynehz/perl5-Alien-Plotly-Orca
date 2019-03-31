@@ -37,9 +37,9 @@ installs it.
 
 =head1 CAVEATS
 
-plotly-orca requires X service. If your host is headless you mostly need
-L<xvfb|https://en.wikipedia.org/wiki/Xvfb>, either ran as a service,
-or ran as a wrapper every time like C<xvfb-run orca ...>.
+On Linux plotly-orca requires X service. If your host is headless you
+mostly need L<xvfb|https://en.wikipedia.org/wiki/Xvfb>, either ran as a
+service, or ran as a wrapper every time like C<xvfb-run orca ...>.
 
 =head1 SEE ALSO
 
