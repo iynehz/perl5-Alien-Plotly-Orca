@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/stphnlyd/perl5-Alien-Plotly-Orca.svg?branch=master)](https://travis-ci.org/stphnlyd/perl5-Alien-Plotly-Orca)
+[![AppVeyor Status](https://ci.appveyor.com/api/projects/status/github/stphnlyd/perl5-Alien-Plotly-Orca?branch=master&svg=true)](https://ci.appveyor.com/project/stphnlyd/perl5-Alien-Plotly-Orca)
 
 # NAME
 
@@ -31,6 +32,12 @@ my $version = Alien::Plotly::Orca->version;
 
 This module finds [plotly-orca](https://github.com/plotly/orca) or
 installs it.
+
+# CAVEATS
+
+plotly-orca requires X service. If your host is headless you mostly need
+[xvfb](https://en.wikipedia.org/wiki/Xvfb), either ran as a service,
+or ran as a wrapper every time like `xvfb-run orca ...`.
 
 # SEE ALSO
 
