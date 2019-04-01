@@ -62,16 +62,17 @@ plugin 'Probe::CommandLine' => (
 share {
     require Path::Tiny;
 
-    start_url $download_url{$^O};
+    start_url( $ENV{ALIEN_PLOTLY_ORCA_DOWNLOAD_URL} || $download_url{$^O} );
 
     plugin 'Download';
-    if ($^O eq 'linux') {
+    if ( $^O eq 'linux' ) {
         extract sub {
-            my($build, $src) = @_;
+            my ( $build, $src ) = @_;
             my $dst = Path::Tiny::path('.')->absolute;
             Path::Tiny::path($src)->copy($dst);
         };
-    } else {
+    }
+    else {
         plugin 'Extract' => 'tar.bz2';
     }
 
