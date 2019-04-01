@@ -15,17 +15,22 @@ version 0.0000\_01
 use Alien::Plotly::Orca;
 use Config;
 
-$ENV{PATH} = join(
-    $Config{path_sep},
-    Alien::Plotly::Orca->bin_dir,
-    $ENV{PATH}
-);
+if (Alien::Plotly::Orca->install_type eq 'share') {
+    $ENV{PATH} = join(
+        $Config{path_sep},
+        Alien::Plotly::Orca->bin_dir,
+        $ENV{PATH}
+    );
 
-# Now you have plotly-orca executable in $ENV{PATH}
+    # get version
+    my $version = Alien::Plotly::Orca->version;
+}
+
+# If install_type is not 'share' then it means plotly-orca
+# was detected from PATH when Alien::Plotly::Orca was installed.
+#
+# So either way now you should be able to do,
 print `orca -h`;
-
-# get version
-my $version = Alien::Plotly::Orca->version;
 ```
 
 # DESCRIPTION
