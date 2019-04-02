@@ -8,31 +8,8 @@ use warnings;
 use Capture::Tiny qw(:all);
 use File::Which;
 
-=func need_xvfb
-
-    need_xvfb($force_check=false)
-
-Returns true if Linux host is "headless", that is, not having a running X
-service.
-
-On Windows it always returns false.
-
-If C<$force_check> is false, the default, the result would be decided
-only on first call to this function in a Perl process.
-
-=func can_xvfb
-
-    can_xvfb($force_check=false)
-
-Returns true if C<xvfb-run> is found in system.
-
-If C<$force_check> is false, the default, the result would be decided
-only on first call to this function in a Perl process.
-
-=cut
-
+# Returns true if Linux host is "headless".
 my $need_xvfb;
-
 sub need_xvfb {
     my ($force_check) = @_;
 
@@ -44,8 +21,8 @@ sub need_xvfb {
     return $need_xvfb;
 }
 
+# Returns true if xvfb-run is found in system.
 my $can_xvfb;
-
 sub can_xvfb {
     my ($force_check) = @_;
 
