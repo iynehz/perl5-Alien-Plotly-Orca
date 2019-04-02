@@ -37,6 +37,11 @@ print `orca -h`;
 This module finds [plotly-orca](https://github.com/plotly/orca) or
 installs it.
 
+For installation it uses prebuilt packages and would supports 3 OS
+platforms: Windows, Linux and OSX. For Windows and OSX it would get package
+from Anaconda's plotly repo. For Linux it would get the AppImage file from
+plotly-orca's github release page.
+
 # CAVEATS
 
 On Linux plotly-orca requires X service. If your host is headless you
