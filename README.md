@@ -7,7 +7,7 @@ Alien::Plotly::Orca - Finds or installs plotly-orca
 
 # VERSION
 
-version 0.0000\_02
+version 0.0001
 
 # SYNOPSIS
 
