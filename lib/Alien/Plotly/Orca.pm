@@ -36,19 +36,49 @@ __END__
 
 =head1 DESCRIPTION
 
-This module finds L<plotly-orca|https://github.com/plotly/orca> or
-installs it.
+This module finds L<plotly-orca|https://github.com/plotly/orca> from your
+system, or installs it (version 1.2.1).
 
 For installation it uses prebuilt packages and would supports 3 OS
-platforms: Windows, Linux and OSX. For Windows and OSX it would get package
-from Anaconda's plotly repo. For Linux it would get the AppImage file from
-plotly-orca's github release page.
+platforms: Windows, Linux and OSX.
+For Windows and OSX it would get package from
+L<Anaconda's plotly repo|https://anaconda.org/plotly/plotly-orca/files>.
+For Linux it would get the AppImage file from
+L<plotly-orca's github release page|https://github.com/plotly/orca/releases>.
 
-=head1 CAVEATS
+=head1 INSTALLATION
 
-On Linux plotly-orca requires X service. If your host is headless you
+=head2 Linux
+
+Normally you should be all fine if you have a recent version of popular
+distros like Ubuntu as your Linux desktop. If you're an advanced Linux user
+or if you get problems check below list and make sure you have them all on
+you Linux host.
+
+=for :list
+* FUSE
+to run AppImage, as we use AppImage for Linux. See also
+L<https://github.com/AppImage/AppImageKit/wiki/FUSE>.
+* A running X service
+plotly-orca requires X service. If your host is headless you
 mostly need L<xvfb|https://en.wikipedia.org/wiki/Xvfb>, either ran as a
 service, or ran as a wrapper every time like C<xvfb-run orca ...>.
+* "open sans" font
+Not having this font would cause installation to fail, but texts could be
+not properly rendered in the exported image file. See also
+L<https://github.com/plotly/orca/issues/148>.
+
+=head2 Windows
+
+On Windows do not have your Perl installation itself in a long path. This
+is because that in the plotly-orca's tar.bz2 archive there are some files
+with quite long paths, and if your Perl itself is in a long path, during
+some intermediate step of installing this library there would need very
+long paths for some extractd files which could exceed Windows's default
+MAX_PATH limit of 260 characters.
+And Archive::Tar cannot handle that properly.
+
+=head2 Max OSX
 
 For Mac OSX I can't really test it as I don't have such a system at
 hand. Travis CI does not seem to support Perl for OSX...

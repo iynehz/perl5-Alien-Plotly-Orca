@@ -34,19 +34,53 @@ print `orca -h`;
 
 # DESCRIPTION
 
-This module finds [plotly-orca](https://github.com/plotly/orca) or
-installs it.
+This module finds [plotly-orca](https://github.com/plotly/orca) from your
+system, or installs it (version 1.2.1).
 
 For installation it uses prebuilt packages and would supports 3 OS
-platforms: Windows, Linux and OSX. For Windows and OSX it would get package
-from Anaconda's plotly repo. For Linux it would get the AppImage file from
-plotly-orca's github release page.
+platforms: Windows, Linux and OSX.
+For Windows and OSX it would get package from
+[Anaconda's plotly repo](https://anaconda.org/plotly/plotly-orca/files).
+For Linux it would get the AppImage file from
+[plotly-orca's github release page](https://github.com/plotly/orca/releases).
 
-# CAVEATS
+# INSTALLATION
 
-On Linux plotly-orca requires X service. If your host is headless you
-mostly need [xvfb](https://en.wikipedia.org/wiki/Xvfb), either ran as a
-service, or ran as a wrapper every time like `xvfb-run orca ...`.
+## Linux
+
+Normally you should be all fine if you have a recent version of popular
+distros like Ubuntu as your Linux desktop. If you're an advanced Linux user
+or if you get problems check below list and make sure you have them all on
+you Linux host.
+
+- FUSE
+
+    to run AppImage, as we use AppImage for Linux. See also
+    [https://github.com/AppImage/AppImageKit/wiki/FUSE](https://github.com/AppImage/AppImageKit/wiki/FUSE).
+
+- A running X service
+
+    plotly-orca requires X service. If your host is headless you
+    mostly need [xvfb](https://en.wikipedia.org/wiki/Xvfb), either ran as a
+    service, or ran as a wrapper every time like `xvfb-run orca ...`.
+
+- "open sans" font
+
+    Not having this font would cause installation to fail, but texts could be
+    not properly rendered in the exported image file. See also
+    [https://github.com/plotly/orca/issues/148](https://github.com/plotly/orca/issues/148).
+
+## Windows
+
+On Windows do not have your Perl installation itself in a long path. This
+is because that in the plotly-orca's tar.bz2 archive there are some files
+with quite long paths, and if your Perl itself is in a long path, during
+some intermediate step of installing this library there would need very
+long paths for some extractd files which could exceed Windows's default
+MAX\_PATH limit of 260 characters.
+And Archive::Tar cannot handle that properly.
+
+## Max OSX
 
 For Mac OSX I can't really test it as I don't have such a system at
 hand. Travis CI does not seem to support Perl for OSX...
