@@ -78,7 +78,7 @@ long paths for some extractd files which could exceed Windows's default
 MAX_PATH limit of 260 characters.
 And Archive::Tar cannot handle that properly.
 
-=head2 Max OSX
+=head2 Mac OSX
 
 For Mac OSX I can't really test it as I don't have such a system at
 hand. Travis CI does not seem to support Perl for OSX...
