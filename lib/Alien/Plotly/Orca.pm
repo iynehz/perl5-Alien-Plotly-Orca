@@ -64,7 +64,7 @@ plotly-orca requires X service. If your host is headless you
 mostly need L<xvfb|https://en.wikipedia.org/wiki/Xvfb>, either ran as a
 service, or ran as a wrapper every time like C<xvfb-run orca ...>.
 * "open sans" font
-Not having this font would cause installation to fail, but texts could be
+Not having this font won't cause installation to fail, but texts could be
 not properly rendered in the exported image file. See also
 L<https://github.com/plotly/orca/issues/148>.
 

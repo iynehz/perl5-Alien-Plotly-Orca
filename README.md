@@ -66,7 +66,7 @@ you Linux host.
 
 - "open sans" font
 
-    Not having this font would cause installation to fail, but texts could be
+    Not having this font won't cause installation to fail, but texts could be
     not properly rendered in the exported image file. See also
     [https://github.com/plotly/orca/issues/148](https://github.com/plotly/orca/issues/148).
 
@@ -88,7 +88,7 @@ hand. Travis CI does not seem to support Perl for OSX...
 # SEE ALSO
 
 [Alien](https://metacpan.org/pod/Alien), 
-[Chart::Plotly](https://metacpan.org/pod/Chart::Plotly)
+[Chart::Plotly](https://metacpan.org/pod/Chart%3A%3APlotly)
 
 [https://github.com/plotly/orca](https://github.com/plotly/orca)
 
