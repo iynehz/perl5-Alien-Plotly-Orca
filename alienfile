@@ -46,18 +46,20 @@ if ( MyInstallUtil::need_xvfb() and not MyInstallUtil::can_xvfb() ) {
       . "Please install xvfb.";
 }
 
-configure {
-    'Capture::Tiny'         => 0,
-    'File::Which'           => 0,
-    'Path::Tiny'            => 0,
-    'File::Copy::Recursive' => 0,
-};
+
 
 plugin 'Probe::CommandLine' => (
     command => MyInstallUtil::wrap_orca('orca'),
     args    => ['-h'],
     match   => qr/plotly/i,
 );
+
+configure {
+    requires 'Capture::Tiny'         => 0;
+    requires 'File::Which'           => 0;
+    requires 'Path::Tiny'            => 0;
+    requires 'File::Copy::Recursive' => 0;
+};
 
 share {
     require Path::Tiny;
