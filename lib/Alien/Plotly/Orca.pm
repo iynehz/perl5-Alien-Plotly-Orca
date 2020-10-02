@@ -37,7 +37,7 @@ __END__
 =head1 DESCRIPTION
 
 This module finds L<plotly-orca|https://github.com/plotly/orca> from your
-system, or installs it (version 1.2.1).
+system, or installs it (version 1.3.1).
 
 For installation it uses prebuilt packages and would supports 3 OS
 platforms: Windows, Linux and OSX.

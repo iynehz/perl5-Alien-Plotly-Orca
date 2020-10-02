@@ -11,8 +11,8 @@ use MyInstallUtil;
 # as that's a bundle of everything needed so we can probably avoid dependency
 # issues.
 
-my $plotly_orca_version          = '1.2.1';
-my $plotly_orca_version_anaconda = '1.2.1-1';
+my $plotly_orca_version          = '1.3.1';
+my $plotly_orca_version_anaconda = '1.3.1-1';
 
 my $anaconda_base_url =
   "https://anaconda.org/plotly/plotly-orca/${plotly_orca_version}/download";
@@ -35,7 +35,7 @@ my $make_url_github = sub {
 my %download_url = (
     MSWin32 => $make_url_anaconda->('win-64'),
     darwin  => $make_url_anaconda->('osx-64'),
-    linux => $make_url_github->("orca-${plotly_orca_version}-x86_64.AppImage"),
+    linux => $make_url_github->("orca-${plotly_orca_version}.AppImage"),
 );
 
 die 'Unsupported OS' unless grep { $^O eq $_ } ( keys %download_url );

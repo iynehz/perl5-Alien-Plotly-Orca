@@ -7,7 +7,7 @@ Alien::Plotly::Orca - Finds or installs plotly-orca
 
 # VERSION
 
-version 0.0001
+version 0.0002
 
 # SYNOPSIS
 
@@ -35,7 +35,7 @@ print `orca -h`;
 # DESCRIPTION
 
 This module finds [plotly-orca](https://github.com/plotly/orca) from your
-system, or installs it (version 1.2.1).
+system, or installs it (version 1.3.1).
 
 For installation it uses prebuilt packages and would supports 3 OS
 platforms: Windows, Linux and OSX.
@@ -88,7 +88,7 @@ hand. Travis CI does not seem to support Perl for OSX...
 # SEE ALSO
 
 [Alien](https://metacpan.org/pod/Alien), 
-[Chart::Plotly](https://metacpan.org/pod/Chart%3A%3APlotly)
+[Chart::Plotly](https://metacpan.org/pod/Chart::Plotly)
 
 [https://github.com/plotly/orca](https://github.com/plotly/orca)
 
@@ -96,9 +96,13 @@ hand. Travis CI does not seem to support Perl for OSX...
 
 Stephan Loyd <sloyd@cpan.org>
 
+# CONTRIBUTOR
+
+Thibault Duponchelle <thibault.duponchelle@amadeus.com>
+
 # COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2019 by Stephan Loyd.
+This software is copyright (c) 2019-2020 by Stephan Loyd.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
