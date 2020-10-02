@@ -1,8 +1,8 @@
 Revision history of Alien-Plotly-Orca
 
-0.0002      TBD
+0.0002      2020-10-02
     - Use orca version 1.3.1.
-    - Fix a installtion issue. Thanks Thibault Duponchelle! (GH-4)
+    - Fix a installation issue. Thanks Thibault Duponchelle! (GH-4)
 
 0.0001      2019-04-03
     - First release.
