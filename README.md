@@ -3,11 +3,11 @@
 
 # NAME
 
-Alien::Plotly::Orca - Finds or installs plotly-orca
+Alien::Plotly::Orca - (DEPRECATED) Finds or installs plotly-orca
 
 # VERSION
 
-version 0.0002
+version 0.0003
 
 # SYNOPSIS
 
@@ -33,6 +33,8 @@ print `orca -h`;
 ```
 
 # DESCRIPTION
+
+This module is deprecated in favor of [Chart::Kaleido](https://metacpan.org/pod/Chart%3A%3AKaleido).
 
 This module finds [plotly-orca](https://github.com/plotly/orca) from your
 system, or installs it (version 1.3.1).
@@ -88,7 +90,8 @@ hand. Travis CI does not seem to support Perl for OSX...
 # SEE ALSO
 
 [Alien](https://metacpan.org/pod/Alien), 
-[Chart::Plotly](https://metacpan.org/pod/Chart::Plotly)
+[Chart::Plotly](https://metacpan.org/pod/Chart%3A%3APlotly)
+[Chart::Kaleido](https://metacpan.org/pod/Chart%3A%3AKaleido), [Alien::Plotly::Kaleido](https://metacpan.org/pod/Alien%3A%3APlotly%3A%3AKaleido)
 
 [https://github.com/plotly/orca](https://github.com/plotly/orca)
 
@@ -102,7 +105,7 @@ Thibault Duponchelle <thibault.duponchelle@amadeus.com>
 
 # COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2019-2020 by Stephan Loyd.
+This software is copyright (c) 2019-2022 by Stephan Loyd.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

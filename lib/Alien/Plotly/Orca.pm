@@ -1,6 +1,6 @@
 package Alien::Plotly::Orca;
 
-# ABSTRACT: Finds or installs plotly-orca
+# ABSTRACT: (DEPRECATED) Finds or installs plotly-orca
 
 use strict;
 use warnings;
@@ -35,6 +35,8 @@ __END__
     print `orca -h`;
 
 =head1 DESCRIPTION
+
+This module is deprecated in favor of L<Chart::Kaleido>.
 
 This module finds L<plotly-orca|https://github.com/plotly/orca> from your
 system, or installs it (version 1.3.1).
@@ -87,6 +89,7 @@ hand. Travis CI does not seem to support Perl for OSX...
 
 L<Alien>, 
 L<Chart::Plotly>
+L<Chart::Kaleido>, L<Alien::Plotly::Kaleido>
 
 L<https://github.com/plotly/orca>
 
