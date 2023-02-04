@@ -41,3 +41,7 @@ inc/
 perltidy.ERR
 perltidy.LOG
 
+# dzil build tarball and dir
+Alien-Plotly-Orca-*.tar.gz
+Alien-Plotly-Orca-*/
+

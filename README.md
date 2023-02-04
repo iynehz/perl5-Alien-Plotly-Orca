@@ -1,5 +1,5 @@
-[![Build Status](https://travis-ci.org/stphnlyd/perl5-Alien-Plotly-Orca.svg?branch=master)](https://travis-ci.org/stphnlyd/perl5-Alien-Plotly-Orca)
-[![AppVeyor Status](https://ci.appveyor.com/api/projects/status/github/stphnlyd/perl5-Alien-Plotly-Orca?branch=master&svg=true)](https://ci.appveyor.com/project/stphnlyd/perl5-Alien-Plotly-Orca)
+[![Build Status](https://travis-ci.org/iynehz/perl5-Alien-Plotly-Orca.svg?branch=master)](https://travis-ci.org/iynehz/perl5-Alien-Plotly-Orca)
+[![AppVeyor Status](https://ci.appveyor.com/api/projects/status/github/iynehz/perl5-Alien-Plotly-Orca?branch=master&svg=true)](https://ci.appveyor.com/project/iynehz/perl5-Alien-Plotly-Orca)
 
 # NAME
 
@@ -7,7 +7,7 @@ Alien::Plotly::Orca - (DEPRECATED) Finds or installs plotly-orca
 
 # VERSION
 
-version 0.0003
+version 0.001
 
 # SYNOPSIS
 
@@ -105,7 +105,7 @@ Thibault Duponchelle <thibault.duponchelle@amadeus.com>
 
 # COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2019-2022 by Stephan Loyd.
+This software is copyright (c) 2019-2023 by Stephan Loyd.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
